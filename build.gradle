@@ -18,7 +18,7 @@ repositories {
 	// Fixed LWJGL on Linux
 	maven {
 		name = 'Babric'
-		url = 'https://maven.glass-launcher.net/babric'
+		url = 'https://maven.glass-launcher.net/babric/'
 	}
 }
 
@@ -62,6 +62,14 @@ dependencies {
 		}
 	}
 }
+configurations.all {
+	resolutionStrategy {
+		dependencySubstitution {
+			substitute module('io.netty:netty-all:4.0.23.Final') with module('io.netty:netty-all:4.0.25.Final')
+		}
+		force 'io.netty:netty-all:4.0.25.Final'
+	}
+}
 
 if (lwjgl2) {
 	if (currentOs.contains("mac")) {
@@ -72,16 +80,6 @@ if (lwjgl2) {
 					substitute module('org.lwjgl.lwjgl:lwjgl:2.9.2-nightly-201408222') with module('org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209')
 				}
 				force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
-			}
-		}
-	} else if (currentOs.contains("linux")) {
-		configurations.all {
-			resolutionStrategy {
-				dependencySubstitution {
-					substitute(module('org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209')) using module('org.lwjgl.lwjgl:lwjgl_util:2.9.4-babric.1')
-					substitute module('org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209') using module('org.lwjgl.lwjgl:lwjgl:2.9.4-babric.1')
-				}
-				force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-babric.1'
 			}
 		}
 	}

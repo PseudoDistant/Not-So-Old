@@ -1,26 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "notsoold",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Hack",
+  "description": "A hack for fixing networking by removing the server blocklist.",
   "authors": [
-    "Me!"
+    "PseudoDistant"
   ],
-  "contact": {
-    "homepage": "https://legacyfabric.net/",
-    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
-  },
-  "license": "CC0-1.0",
   "icon": "assets/modid/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.legacyfabric.notsoold.NotSoOld"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "notsoold.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.0",
